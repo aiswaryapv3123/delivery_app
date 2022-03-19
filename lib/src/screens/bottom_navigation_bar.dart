@@ -30,7 +30,7 @@ class _BottomBarState extends State<BottomBar> {
     return Container(
       width: screenWidth(context, dividedBy: 1),
       height: screenHeight(context, dividedBy: 12),
-      color: Colors.transparent,
+      color:Constants.colors[2],
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,

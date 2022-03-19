@@ -32,7 +32,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Constants.colors[2],
+        backgroundColor: Colors.transparent,
         bottomNavigationBar: BottomBar(
           index: 0,
         ),
@@ -62,6 +62,7 @@ class _ProfilePageState extends State<ProfilePage> {
           child: SingleChildScrollView(
             child: Container(
               width: screenWidth(context, dividedBy: 1),
+              color:Constants.colors[2],
               child: Column(
                 children: [
                   Container(
@@ -82,22 +83,28 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                       ),
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        // mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          SizedBox(
+                            height: screenHeight(context, dividedBy: 20),
+                          ),
                           DeliveryAppBar(
                             title: "Profile",
                             profile: true,
                             leftIcon: Icon(
                               Icons.menu,
-                              color: Constants.colors[6],
+                              color: Constants.colors[0],
                             ),
                             rightIcon: Icon(
                               Icons.notifications_none_sharp,
-                              color: Constants.colors[6],
+                              color: Constants.colors[0],
                             ),
                             onTapRightIcon: () {
                               push(context, const NotificationsPage());
                             },
+                          ),
+                          SizedBox(
+                            height: screenHeight(context, dividedBy: 10),
                           ),
                           Container(
                             width: screenWidth(context, dividedBy: 6),
@@ -132,11 +139,15 @@ class _ProfilePageState extends State<ProfilePage> {
                                   fontFamily: "Padauk"))
                         ],
                       )),
+                  SizedBox(
+                    height: screenHeight(context, dividedBy: 40),
+                  ),
                   Container(
                     // height: screenHeight(context, dividedBy: 2),
                     width: screenWidth(context, dividedBy: 1),
                     padding: EdgeInsets.symmetric(
                         horizontal: screenWidth(context, dividedBy: 30)),
+                    color:Constants.colors[2],
                     child: Column(
                       children: [
                         Row(
@@ -144,6 +155,9 @@ class _ProfilePageState extends State<ProfilePage> {
                             Icon(
                               Icons.person,
                               color: Constants.colors[6],
+                            ),
+                            SizedBox(
+                              width:screenWidth(context, dividedBy:30)
                             ),
                             Text("About",
                                 style: TextStyle(
@@ -172,6 +186,9 @@ class _ProfilePageState extends State<ProfilePage> {
                             Icon(
                               Icons.shopping_bag,
                               color: Constants.colors[6],
+                            ),
+                            SizedBox(
+                                width:screenWidth(context, dividedBy:30)
                             ),
                             Text("Recent Orders",
                                 style: TextStyle(
