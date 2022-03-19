@@ -6,6 +6,7 @@ import 'package:delivery_app/src/bloc/states.dart';
 import 'package:delivery_app/src/models/get_orderlist_response.dart';
 import 'package:delivery_app/src/screens/bottom_navigation_bar.dart';
 import 'package:delivery_app/src/screens/notifications_page.dart';
+import 'package:delivery_app/src/screens/order_details_page.dart';
 import 'package:delivery_app/src/utils/constants.dart';
 import 'package:delivery_app/src/utils/utils.dart';
 import 'package:delivery_app/src/widgets/appbar.dart';
@@ -103,7 +104,11 @@ class _HomePageState extends State<HomePage> {
                             itemBuilder: (ctx, index) {
                               return Column(
                                 children: [
-                                  OrderCard(orderData: orderData.data![index]),
+                                   OrderCard(orderData: orderData.data![index],
+                                     onPressed: (){
+                                     push(context, OrderDetailsPage(orderData: orderData.data![index],));
+                                     },
+                                   ),
                                   SizedBox(
                                     height:
                                         screenHeight(context, dividedBy: 30),

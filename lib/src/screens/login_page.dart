@@ -67,8 +67,6 @@ class _LoginPageState extends State<LoginPage> {
         prefs.setInt('userId', data.data!.id!);
         prefs.setString('token', data.data!.apiToken!);
         loading = false;
-        final int? counter = prefs.getInt('userId');
-        print("UserId  " + counter.toString());
       });
       push(context, HomePage());
     } else {

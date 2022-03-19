@@ -28,12 +28,60 @@ class DeliveryBloc extends Bloc<DeliveryEvents, DeliveryStates> {
           error: 'Invalid Response format',
         ));
       } catch (e) {
-        print("Error "+ e.toString());
         emit(OrderErrorState(
           error: 'Unknown Error',
         ));
       }
     });
+
+    /// order history list
+    on<GetOrderHistoryData>((event, emit) async {
+      try {
+        emit(OrderHistoryLoadingState());
+        final data = await deliveryRepo.fetchOrderHistory();
+        emit(OrderHistoryLoadedState(getOrderHistoryList: data));
+      } on SocketException {
+        emit(OrderHistoryErrorState(error: "No internet"));
+      } on HttpException {
+        emit(OrderHistoryErrorState(
+          error: 'No Service Found',
+        ));
+      } on FormatException {
+        emit(OrderHistoryErrorState(
+          error: 'Invalid Response format',
+        ));
+      } catch (e) {
+        emit(OrderHistoryErrorState(
+          error: 'Unknown Error',
+        ));
+      }
+    });
+
+    /// recent order list
+    on<GetRecentOrderData>((event, emit) async {
+      try {
+        emit(RecentOrderLoadingState());
+        final data = await deliveryRepo.fetchRecentOrder();
+        emit(RecentOrderLoadedState(getRecentOrder: data));
+      // }
+      // on SocketException {
+      //   emit(RecentOrderErrorState(error: "No internet"));
+      // } on HttpException {
+      //   emit(RecentOrderErrorState(
+      //     error: 'No Service Found',
+      //   ));
+      // } on FormatException {
+      //   emit(RecentOrderErrorState(
+      //     error: 'Invalid Response format',
+      //   ));
+      } catch (e) {
+        print("Error "+ e.toString());
+        // emit(RecentOrderErrorState(
+        //   error: 'Unknown Error',
+        // ));
+      }
+    });
+
 
     /// notifications
     on<GetNotificationsData>((event, emit) async {
@@ -52,7 +100,6 @@ class DeliveryBloc extends Bloc<DeliveryEvents, DeliveryStates> {
           error: 'Invalid Response format',
         ));
       } catch (e) {
-        print("Error "+ e.toString());
         emit(NotificationsErrorState(
           error: 'Unknown Error',
         ));

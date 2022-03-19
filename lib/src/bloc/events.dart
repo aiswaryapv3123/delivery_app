@@ -11,3 +11,9 @@ class GetOrderListData extends DeliveryEvents {}
 
 
 class GetNotificationsData extends DeliveryEvents {}
+
+
+class GetOrderHistoryData extends DeliveryEvents {}
+
+
+class GetRecentOrderData extends DeliveryEvents {}

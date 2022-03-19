@@ -8,13 +8,15 @@ class DeliveryAppBar extends StatefulWidget {
   final Widget? rightIcon;
   final Function? onTapLeftIcon;
   final Function? onTapRightIcon;
+  final bool profile;
   const DeliveryAppBar(
       {Key? key,
       this.title,
       this.rightIcon,
       this.leftIcon,
       this.onTapLeftIcon,
-      this.onTapRightIcon})
+      this.onTapRightIcon,
+      this.profile = false})
       : super(key: key);
 
   @override
@@ -47,7 +49,7 @@ class _DeliveryAppBarState extends State<DeliveryAppBar> {
               widget.title!,
               style: TextStyle(
                   fontSize: 16,
-                  color: Constants.colors[3],
+                  color: widget.profile ==true? Colors.white: Constants.colors[3],
                   fontFamily: "Padauk",
                   fontWeight: FontWeight.bold),
             ),

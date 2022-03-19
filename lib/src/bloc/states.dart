@@ -1,5 +1,6 @@
 import 'package:delivery_app/src/models/get_notifications.dart';
 import 'package:delivery_app/src/models/get_orderlist_response.dart';
+import 'package:delivery_app/src/models/get_recent_orders.dart';
 import 'package:delivery_app/src/models/login_request.dart';
 import 'package:delivery_app/src/models/login_response.dart';
 import 'package:equatable/equatable.dart';
@@ -24,6 +25,35 @@ class OrderLoadedState extends DeliveryStates {
 class OrderErrorState extends DeliveryStates {
   String? error;
   OrderErrorState({this.error});
+}
+/// order history list
+class OrderHistoryInitialState extends DeliveryStates {}
+
+class OrderHistoryLoadingState extends DeliveryStates {}
+
+class OrderHistoryLoadedState extends DeliveryStates {
+  GetOrderList getOrderHistoryList;
+  OrderHistoryLoadedState({required this.getOrderHistoryList});
+}
+
+class OrderHistoryErrorState extends DeliveryStates {
+  String? error;
+  OrderHistoryErrorState({this.error});
+}
+
+/// recent order list
+class RecentOrderInitialState extends DeliveryStates {}
+
+class RecentOrderLoadingState extends DeliveryStates {}
+
+class RecentOrderLoadedState extends DeliveryStates {
+  GetRecentOrder getRecentOrder;
+  RecentOrderLoadedState({required this.getRecentOrder});
+}
+
+class RecentOrderErrorState extends DeliveryStates {
+  String? error;
+  RecentOrderErrorState({this.error});
 }
 
 /// notifications
